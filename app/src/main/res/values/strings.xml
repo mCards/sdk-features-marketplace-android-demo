@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">mCards Features Marketplace SDK Demo</string>
+    <string name="demo_fragment_label">Demo Fragment</string>
+
+    <!-- TODO add your auth0 values gotten from the mCards team -->
+    <string name="auth0_domain">auth0 domain placeholder</string>
+    <string name="auth0_scheme">auth0 scheme placeholder</string>
+</resources>
