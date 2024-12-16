@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.mcards.sdk.auth.AuthSdk
@@ -65,7 +66,9 @@ class DemoFragment : Fragment() {
             }
 
             override fun onFailure(message: String) {
-                Snackbar.make(view, message, Snackbar.LENGTH_LONG).show()
+                activity?.runOnUiThread {
+                    Snackbar.make(view, message, Snackbar.LENGTH_LONG).show()
+                }
             }
         }
 
@@ -98,16 +101,22 @@ class DemoFragment : Fragment() {
 
         val syncCallback = object : FmSdk.SyncCallback {
             override fun onFailure(msg: String) {
-                Snackbar.make(requireView(), msg, BaseTransientBottomBar.LENGTH_LONG).show()
-                binding.progressbar.visibility = View.GONE
+                activity?.runOnUiThread {
+                    Snackbar.make(requireView(), msg, BaseTransientBottomBar.LENGTH_LONG).show()
+                    binding.progressbar.visibility = View.GONE
+                }
             }
 
             override fun onSubscribe() {
-                binding.progressbar.visibility = View.VISIBLE
+                activity?.runOnUiThread {
+                    binding.progressbar.visibility = View.VISIBLE
+                }
             }
 
             override fun onSuccess() {
-                binding.progressbar.visibility = View.GONE
+                activity?.runOnUiThread {
+                    binding.progressbar.visibility = View.GONE
+                }
                 //TODO take any needed action now that the FMSDK is successfully synced
             }
         }
@@ -190,7 +199,14 @@ class DemoFragment : Fragment() {
                     t.result?.let {
                         if (it.isNotEmpty()) {
                             val feature = it[0]
-
+                            activity?.runOnUiThread {
+                                MaterialAlertDialogBuilder(requireContext())
+                                    .setTitle("Success")
+                                    .setMessage(getString(R.string.success, it.size))
+                                    .setPositiveButton("Ok") { dialog, _ ->
+                                        dialog.dismiss()
+                                    }.create().show()
+                            }
                         }
                     } ?: t.errorMsg?.let {
                         activity?.runOnUiThread {
