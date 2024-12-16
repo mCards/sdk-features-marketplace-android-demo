@@ -3,14 +3,13 @@ package com.mcards.sdk.fm.demo
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil.setContentView
 import com.mcards.sdk.auth.AuthSdkProvider
 
-//TODO add your auth0 aud gotten from the mCards team
-private const val AUTH0_AUD = ""
+//TODO replace with your auth0 aud gotten from the mCards team
+private const val AUTH0_AUD = "https://staging.mcards.com/api"
 
-//TODO add your auth0 client ID gotten from the mCards team
-private const val AUTH0_CLIENT_ID = ""
+//TODO replace with your auth0 client ID gotten from the mCards team
+private const val AUTH0_CLIENT_ID = "DL8XpUmzegVl9dR8QpO9djDifTY7nGyd"
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +22,6 @@ class MainActivity : AppCompatActivity() {
         AuthSdkProvider.getInstance().init(getString(R.string.auth0_domain),
             AUTH0_CLIENT_ID,
             AUTH0_AUD,
-            getString(R.string.auth0_scheme))
+            BuildConfig.APPLICATION_ID)
     }
 }

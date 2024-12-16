@@ -1,17 +1,17 @@
 [versions]
-agp = "8.7.2"
-fmsdk = "0.0.19"
-authsdk = "0.0.5.9"
-cardssdk = "0.0.14.14"
+agp = "8.7.3"
+fmsdk = "0.1.0.2"
+authsdk = "0.0.6.7"
+cardssdk = "0.0.15.4"
 
-kotlin = "2.0.21"
+kotlin = "2.1.0"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 material = "1.12.0"
-navigationFragmentKtx = "2.8.4"
+navigationFragmentKtx = "2.8.5"
 
 [libraries]
 fm-sdk = { module = "com.mcards.sdk:fm", version.ref = "fmsdk" }

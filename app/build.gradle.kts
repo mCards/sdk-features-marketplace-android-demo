@@ -14,7 +14,8 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-        addManifestPlaceholders(mapOf("auth0Domain" to "@string/auth0_domain", "auth0Scheme" to "@string/auth0_scheme"))
+        addManifestPlaceholders(mapOf("auth0Domain" to "@string/auth0_domain",
+            "auth0Scheme" to "com.mcards.sdk.fm.demo"))
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -38,6 +39,7 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+        buildConfig = true
     }
 }
 
