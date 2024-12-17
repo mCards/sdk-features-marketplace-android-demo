@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">mCards Features Marketplace SDK Demo</string>
+    <string name="demo_fragment_label">Demo Fragment</string>
+    <string name="login">Login and get cards and features</string>
+    <string name="success">Successfully fetched %1$d features. Use the debugger to inspect the feature data.</string>
+
+    <!-- TODO add your auth0 values gotten from the mCards team -->
+    <string name="auth0_domain">mcards-test.au.auth0.com</string>
+</resources>
