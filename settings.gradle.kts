@@ -43,5 +43,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "mCards Features Marketplace SDK Demo"
+rootProject.name = "mCards FM SDK Demo"
 include(":app")
