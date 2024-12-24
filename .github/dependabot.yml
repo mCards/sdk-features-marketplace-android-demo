@@ -10,6 +10,6 @@ updates:
     registries: "*"
     schedule:
       interval: "daily"
-    target-branch: "dev"
+    target-branch: "master"
     reviewers:
      - "jnewgard"
