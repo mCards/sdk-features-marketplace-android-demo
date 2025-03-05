@@ -1,5 +1,5 @@
 [versions]
-agp = "8.8.2"
+agp = "8.9.0"
 fmsdk = "0.1.1.2"
 authsdk = "0.0.6.7"
 cardssdk = "0.1.0.0"
