@@ -4,6 +4,7 @@ kotlin = "2.1.20"
 material = "1.12.0"
 navigationFragmentKtx = "2.8.9"
 sdkBom = "0.0.17"
+navigationFragmentKtx = "2.8.9"
 
 [libraries]
 sdk-bom = { module = "com.mcards.sdk:bom", version.ref = "sdkBom" }
