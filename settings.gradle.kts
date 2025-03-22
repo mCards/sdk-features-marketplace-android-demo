@@ -20,7 +20,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven {
-            url = uri("https://maven.pkg.github.com/mymcard/sdk-bom-android")
+            url = uri("https://maven.pkg.github.com/mcards/sdk-bom-android")
             credentials {
                 username = githubUsername.get()
                 password = githubToken.get()

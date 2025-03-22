@@ -1,11 +1,9 @@
 [versions]
-agp = "8.8.1"
-kotlin = "2.1.10"
-coreKtx = "1.15.0"
-appcompat = "1.7.0"
+agp = "8.9.0"
+kotlin = "2.1.20"
 material = "1.12.0"
-navigationFragmentKtx = "2.8.7"
-sdkBom = "0.0.15"
+navigationFragmentKtx = "2.8.9"
+sdkBom = "0.0.17"
 
 [libraries]
 sdk-bom = { module = "com.mcards.sdk:bom", version.ref = "sdkBom" }
@@ -13,8 +11,6 @@ sdk-auth = { module = "com.mcards.sdk:auth" }
 sdk-cards = { module = "com.mcards.sdk:cards" }
 sdk-fm = { module = "com.mcards.sdk:fm" }
 
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 
