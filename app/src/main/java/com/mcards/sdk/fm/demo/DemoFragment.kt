@@ -16,11 +16,10 @@ import com.mcards.sdk.cards.CardsSdk
 import com.mcards.sdk.cards.CardsSdkProvider
 import com.mcards.sdk.core.model.AuthTokens
 import com.mcards.sdk.core.model.card.Card
-import com.mcards.sdk.core.network.SdkResult
+import com.mcards.sdk.core.network.model.SdkResult
 import com.mcards.sdk.fm.FmSdk
-import com.mcards.sdk.fm.FmSdkFactory
+import com.mcards.sdk.fm.FmSdkProvider
 import com.mcards.sdk.fm.demo.databinding.FragmentDemoBinding
-import com.mcards.sdk.fm.model.FmArgs
 import com.mcards.sdk.fm.model.features.Feature
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.SingleObserver
@@ -35,7 +34,7 @@ class DemoFragment : Fragment() {
 
     private var _binding: FragmentDemoBinding? = null
     private val binding get() = _binding!!
-    private val fmSdk = FmSdkFactory.get()
+    private val fmSdk = FmSdkProvider.getInstance()
     private val cardsSdk = CardsSdkProvider.getInstance()
 
     private var userPhoneNumber = ""
@@ -54,7 +53,7 @@ class DemoFragment : Fragment() {
 
         val authSdk = AuthSdkProvider.getInstance()
 
-        val loginCallback = object : AuthSdk.LoginCallback {
+        val loginCallback = object : AuthSdk.Auth0Callback {
             override fun onSuccess(
                 user: User,
                 tokens: AuthTokens,
@@ -76,9 +75,9 @@ class DemoFragment : Fragment() {
 
         binding.loginBtn.setOnClickListener {
             if (userPhoneNumber.isBlank()) {
-                authSdk.login(requireContext(), TEST_PHONE_NUMBER, loginCallback)
+                authSdk.auth0Authenticate(requireContext(), TEST_PHONE_NUMBER, loginCallback)
             } else {
-                authSdk.login(requireContext(), userPhoneNumber, loginCallback)
+                authSdk.auth0Authenticate(requireContext(), userPhoneNumber, loginCallback)
             }
         }
     }
@@ -91,41 +90,21 @@ class DemoFragment : Fragment() {
             useFirebase =  false,
             object : CardsSdk.InvalidTokenCallback {
                 override fun onTokenInvalid(): String {
-                    return AuthSdkProvider.getInstance().refreshTokens().accessToken
+                    return AuthSdkProvider.getInstance().refreshAuth0Tokens().accessToken
                 }
             })
 
-        val tokenCallback = object : FmSdk.InvalidTokenCallback {
-            override fun onTokenInvalid(): AuthTokens {
-                return AuthSdkProvider.getInstance().refreshTokens()
-            }
-        }
-
-        val syncCallback = object : FmSdk.SyncCallback {
-            override fun onFailure(msg: String) {
-                activity?.runOnUiThread {
-                    Snackbar.make(requireView(), msg, BaseTransientBottomBar.LENGTH_LONG).show()
-                    binding.progressbar.visibility = View.GONE
+        fmSdk.init(requireContext(),
+            tokens.accessToken,
+            debug = true,
+            useFirebase = false,
+            object : FmSdk.InvalidTokenCallback {
+                override fun onTokenInvalid(): String {
+                    return AuthSdkProvider.getInstance().refreshAuth0Tokens().accessToken
                 }
             }
+        )
 
-            override fun onSubscribe() {
-                activity?.runOnUiThread {
-                    binding.progressbar.visibility = View.VISIBLE
-                }
-            }
-
-            override fun onSuccess() {
-                activity?.runOnUiThread {
-                    binding.progressbar.visibility = View.GONE
-                }
-                //TODO take any needed action now that the FMSDK is successfully synced
-            }
-        }
-
-        val args = FmArgs("programId", requireActivity(), tokenCallback, syncCallback)
-        fmSdk.init(args)
-        fmSdk.setTokens(tokens)
 
         getCards()
     }
@@ -173,8 +152,7 @@ class DemoFragment : Fragment() {
 
     @SuppressLint("CheckResult")
     private fun getFeatures(card: Card) {
-        fmSdk.setCard(card)
-        fmSdk.features.getFeatures(card.uuid!!, Feature.Status.ALL)
+        fmSdk.features.getFeatures(card.uuid!!, Feature.Status.ALL, Feature.Sort.USER)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeWith(object : SingleObserver<SdkResult<Array<Feature>>> {
                 override fun onSubscribe(d: Disposable) {

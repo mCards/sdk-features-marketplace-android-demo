@@ -1,19 +1,18 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("kotlin-kapt")
 }
 
 android {
     namespace = "com.mcards.sdk.fm.demo"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.mcards.sdk.fm.demo"
         minSdk = 28
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
         addManifestPlaceholders(mapOf("auth0Domain" to "@string/auth0_domain",
             "auth0Scheme" to "com.mcards.sdk.fm.demo"))
 
@@ -38,7 +37,6 @@ android {
     }
     buildFeatures {
         viewBinding = true
-        dataBinding = true
         buildConfig = true
     }
 }
@@ -46,6 +44,8 @@ android {
 dependencies {
     implementation(libs.material)
     implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.rxjava)
+    implementation(libs.rxandroid)
 
     implementation(platform(libs.sdk.bom))
     implementation(libs.sdk.auth)
