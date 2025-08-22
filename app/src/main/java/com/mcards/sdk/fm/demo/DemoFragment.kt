@@ -87,7 +87,6 @@ class DemoFragment : Fragment() {
         cardsSdk.init(requireActivity(),
             tokens.accessToken,
             debug = true,
-            useFirebase =  false,
             object : CardsSdk.InvalidTokenCallback {
                 override fun onTokenInvalid(): String {
                     return AuthSdkProvider.getInstance().refreshAuth0Tokens().accessToken
@@ -97,7 +96,6 @@ class DemoFragment : Fragment() {
         fmSdk.init(requireContext(),
             tokens.accessToken,
             debug = true,
-            useFirebase = false,
             object : FmSdk.InvalidTokenCallback {
                 override fun onTokenInvalid(): String {
                     return AuthSdkProvider.getInstance().refreshAuth0Tokens().accessToken
