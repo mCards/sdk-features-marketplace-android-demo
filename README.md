@@ -31,7 +31,7 @@ No unique steps are required to integrate with the Cards SDK.
 
 
 # Importing the Features Marketplace SDK
-The mCards android SDKs are provided via a bill of materials. Add the following to your module-level build.gradle:
+The mCards android SDKs are provided via a [bill of materials](https://github.com/mCards/sdk-bom-android). Add the following to your module-level build.gradle:
 
 Groovy:
 ```
@@ -76,6 +76,8 @@ and SMS codes are received here:
 https://receive-sms.cc/US-Phone-Number/14052938132
 
 # Documentation
-Documentation Site: https://mcards.readme.io/
+[Documentation site](https://mcards.readme.io/)
 
-Site-Wide Password: mCardsDevDocs
+[SDKs conceptual documentation](https://mcards.readme.io/docs/mcards-sdk-overview)
+
+Password: mCardsDevDocs
