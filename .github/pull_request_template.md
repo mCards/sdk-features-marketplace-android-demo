@@ -12,19 +12,7 @@ Did you...
 - [ ] Yes (explain in description)
 - [ ] No
 
-##### RUN any relevant tests, run the code formatter, and remove unused imports?
-- [ ] Yes
-- [ ] No
-
-##### ADD or update any necessary tests?
-- [ ] Yes (or unneeded)
-- [ ] No
-
 ##### Run the app and test the changes manually?
-- [ ] Yes
-- [ ] No
-
-##### Increment the app version?
 - [ ] Yes
 - [ ] No
 
@@ -36,6 +24,3 @@ Did you...
 - [ ] Yes
 - [ ] No
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-[Mobile code & PR conventions](https://drive.google.com/drive/u/1/folders/1iCvwdtK-o8Fdt-k3XjwO8HJ6wzy9liDP)

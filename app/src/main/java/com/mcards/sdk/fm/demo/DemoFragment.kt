@@ -17,6 +17,7 @@ import com.mcards.sdk.cards.CardsSdkProvider
 import com.mcards.sdk.core.model.AuthTokens
 import com.mcards.sdk.core.model.card.Card
 import com.mcards.sdk.core.network.model.SdkResult
+import com.mcards.sdk.core.util.LoggingCallback
 import com.mcards.sdk.fm.FmSdk
 import com.mcards.sdk.fm.FmSdkProvider
 import com.mcards.sdk.fm.demo.databinding.FragmentDemoBinding
@@ -103,6 +104,19 @@ class DemoFragment : Fragment() {
             }
         )
 
+        val loggingCallback = object : LoggingCallback {
+            override fun log(t: Throwable) {
+                //TODO log exception
+            }
+
+            override fun log(msg: String) {
+                //TODO log message
+            }
+        }
+
+        //optional, to use your standard logging methods. Needs to be set on each sdk individually
+        cardsSdk.setLoggingCallback(loggingCallback)
+        fmSdk.setLoggingCallback(loggingCallback)
 
         getCards()
     }
