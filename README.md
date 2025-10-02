@@ -79,5 +79,3 @@ https://receive-sms.cc/US-Phone-Number/14052938132
 [Documentation site](https://mcards.readme.io/)
 
 [SDKs conceptual documentation](https://mcards.readme.io/docs/mcards-sdk-overview)
-
-Password: mCardsDevDocs
