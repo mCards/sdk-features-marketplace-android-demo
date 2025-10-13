@@ -2,10 +2,10 @@
 agp = "8.13.0"
 kotlin = "2.2.20"
 material = "1.13.0"
-navigationFragmentKtx = "2.9.3"
-rxjava = "3.1.11"
+navigationFragmentKtx = "2.9.5"
+rxjava = "3.1.12"
 rxandroid = "3.0.2"
-sdkBom = "1.0.6"
+sdkBom = "1.0.9"
 
 [libraries]
 rxandroid = { module = "io.reactivex.rxjava3:rxandroid", version.ref = "rxandroid" }
