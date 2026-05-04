@@ -1,7 +1,7 @@
 [versions]
 agp = "9.0.0"
 material = "1.13.0"
-navigationFragmentKtx = "2.9.7"
+navigationFragmentKtx = "2.9.8"
 rxjava = "3.1.12"
 rxandroid = "3.0.2"
 sdkBom = "1.0.14"
