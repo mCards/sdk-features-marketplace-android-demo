@@ -1,5 +1,5 @@
 [versions]
-agp = "9.0.0"
+agp = "9.2.1"
 material = "1.13.0"
 navigationFragmentKtx = "2.9.7"
 rxjava = "3.1.12"
